@@ -69,3 +69,20 @@ document.getElementById("changePassword").addEventListener("click", () => {
         alert("Hata: " + error.message);
     });
 });
+
+
+// Lightbox Modal Kontrolleri
+const lightbox = document.getElementById("lightbox");
+const closeBtn = lightbox.querySelector(".close");
+
+document.querySelectorAll('.open-lightbox').forEach(item => {
+    item.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        // Lightbox içeriği burada dinamik olarak değiştirilebilir
+    });
+});
+
+// Kapatma Tuşu
+closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+});
