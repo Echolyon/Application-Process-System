@@ -1,134 +1,158 @@
 /* Genel Stil */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #eaf7e0; /* Yeşil tonunda arka plan */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #7abea7; /* Yeşil tonunda arka plan */
 }
 
 /* Header */
 header {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 0.1px 0;
 }
 
 /* Footer */
 footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 footer p {
-    margin: 0;
+  margin: 0;
 }
 
 /* Giriş Paneli */
 .container {
-    background: white;
-    border-radius: 5px;
-    padding: 20px;
-    width: 100%;
-    max-width: 500px;
-    margin: 40px auto;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #a5c8bcbd;
+  border-radius: 9px;
+  padding: 1px;
+  width: 50%;
+  height: 270px;
+  max-width: 1200px;
+  margin: 25px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  color: rgb(84, 84, 84);
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-input, button {
-    margin: 10px 0;
-    padding: 12px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 0; /* Sivri köşe yok */
-    box-sizing: border-box;
+.divider1 {
+  height: 2px;
+  background-color: rgba(128, 128, 128, 0.605);
+  border-radius: 0px;
+  border: 0px solid;
+}
+
+.divider2 {
+  height: 3px;
+  background-color: rgba(128, 128, 128, 0.605);
+  border-radius: 0px;
+  border: 0px solid;
+}
+
+input {
+  margin: 10px 0;
+  margin-right: 250px;
+  padding: 9px;
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 9px; /* Sivri köşe yok */
+  box-sizing: border-box;
 }
 
 button {
-    background-color: black;
-    color: white;
-    cursor: pointer;
+  background-color: black;
+  color: white;
+  width: 20%;
+  padding: 9px;
+  margin: 10px 0;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  margin-right: 330px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
 /* Üye Paneli */
 #memberContainer .overlay {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 700px;
-    margin: 20px auto;
-    color: white;
-    text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  color: white;
+  text-align: center;
 }
 
 #productTable {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
 }
 
 #productTable th, #productTable td {
-    padding: 10px;
-    border: 1px solid #ccc;
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 
 .footer-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer-actions button {
-    width: 48%;
+  width: 48%;
 }
 
 /* Lightbox */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-    background: white;
-    padding: 30px;
-    width: 300px;
-    text-align: center;
-    border-radius: 10px;
+  background: white;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .modal-content h3 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    color: black;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
 }
