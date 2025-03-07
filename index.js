@@ -1,57 +1,71 @@
-// script.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
-function initializeFirebase() {
-    const firebaseConfig = {
-      apiKey: "AIzaSyBxwWd_95aNhbPIrpo0I1myBiMXVxRJ2MM",
-      authDomain: "udem-auth-test.firebaseapp.com",
-      projectId: "udem-auth-test",
-      storageBucket: "udem-auth-test.firebasestorage.app",
-      messagingSenderId: "821819546336",
-      appId: "Y1:821819546336:web:2142e07f01e357cabf4e85",
-      measurementId: "G-PEJC0TZNM7"
-    };
-  
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-  
-    const loginForm = document.getElementById('loginForm');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const messageDiv = document.getElementById('message');
-  
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = emailInput.value;
-      const password = passwordInput.value;
-  
-      try {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-        messageDiv.textContent = `Welcome, ${user.email}!`;
-        console.log(user);
-      } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        messageDiv.textContent = `Error: ${errorMessage}`;
-        console.error(errorCode, errorMessage);
-      }
+const firebaseConfig = {
+    apiKey: "AIzaSyBxwWd_95aNhbPIrpo0I1myBiMXVxRJ2MM",
+    authDomain: "udem-auth-test.firebaseapp.com",
+    projectId: "udem-auth-test",
+    storageBucket: "udem-auth-test.appspot.com",
+    messagingSenderId: "821819546336",
+    appId: "1:821819546336:web:2142e07f01e357cabf4e85",
+    measurementId: "G-PEJC0TZNM7"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        document.getElementById("authContainer").style.display = "none";
+        document.getElementById("memberContainer").style.display = "block";
+    } else {
+        document.getElementById("authContainer").style.display = "block";
+        document.getElementById("memberContainer").style.display = "none";
+    }
+});
+
+document.getElementById("loginForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            window.location.href = "index.html";
+        })
+        .catch(error => {
+            let errorMessage = "";
+            switch (error.code) {
+                case "auth/invalid-email":
+                    errorMessage = "Geçersiz e-posta adresi!";
+                    break;
+                case "auth/user-disabled":
+                    errorMessage = "Hesabınız devre dışı bırakıldı.";
+                    break;
+                case "auth/user-not-found":
+                    errorMessage = "Böyle bir kullanıcı bulunamadı.";
+                    break;
+                case "auth/wrong-password":
+                    errorMessage = "Yanlış şifre.";
+                    break;
+                default:
+                    errorMessage = "Bir hata oluştu, lütfen tekrar deneyin.";
+            }
+            document.getElementById("errorMessage").innerText = errorMessage;
+        });
+});
+
+document.getElementById("logout").addEventListener("click", () => {
+    signOut(auth).then(() => {
+        window.location.href = "index.html";
     });
-  
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log("User is signed in:", user);
-      } else {
-        console.log("User is signed out");
-      }
+});
+
+document.getElementById("changePassword").addEventListener("click", () => {
+    const email = auth.currentUser.email;
+    sendPasswordResetEmail(auth, email).then(() => {
+        alert("Şifre sıfırlama e-postası gönderildi!");
+    }).catch(error => {
+        alert("Hata: " + error.message);
     });
-  }
-  
-  //Check if Firebase has loaded
-  if (typeof firebase !== 'undefined'){
-    initializeFirebase();
-  } else {
-    console.error("Firebase is not loaded")
-  }
-  
-  
+});
