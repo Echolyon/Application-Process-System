@@ -4,56 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UDEM Authentication</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <h1>UDEM Authentication System</h1>
+    </header>
+
+    <!-- Giriş Paneli -->
     <div class="container" id="authContainer">
         <h2>Giriş Yap</h2>
         <form id="loginForm">
             <input type="email" id="email" placeholder="E-posta" required>
             <input type="password" id="password" placeholder="Şifre" required>
-            <button type="submit">Giriş Yap</button>
+            <button type="submit">GİRİŞ YAP</button>
         </form>
         <p id="errorMessage"></p>
-        <div class="footer">
-            <p>Hesabınız yok mu? <a href="#">Kayıt Ol</a></p>
+    </div>
+
+    <!-- Member Paneli (Giriş sonrası) -->
+    <div class="container" id="memberContainer" style="display: none;">
+        <div class="overlay">
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dinamik olarak ürünler buraya eklenecek -->
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-actions">
+            <button id="changePassword">Şifre Değiştir</button>
+            <button id="logout">Çıkış Yap</button>
         </div>
     </div>
 
-    <div class="container" id="memberContainer" style="display: none;">
-        <h2>Üye Paneli</h2>
-        <button id="changePassword">Şifre Değiştir</button>
-        <button id="logout">Çıkış Yap</button>
-        
-        <h3>Belgeleriniz</h3>
-        <button id="createForm">Yeni Belge Oluştur</button>
-        
-        <table border="1" id="formsTable">
-            <thead>
-                <tr>
-                    <th>Belge Adı</th>
-                    <th>İşlem</th>
-                </tr>
-            </thead>
-            <tbody id="formsList">
-                <!-- Kullanıcıya özel formlar buraya eklenecek -->
-            </tbody>
-        </table>
-    </div>
-    
     <!-- Lightbox Modal -->
-    <div id="formModal" class="modal" style="display: none;">
+    <div id="lightbox" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Belge Oluştur</h2>
-            <form id="documentForm">
-                <input type="text" id="docName" placeholder="Belge Adı" required>
-                <textarea id="docContent" placeholder="Belge İçeriği" required></textarea>
-                <button type="submit">Kaydet</button>
-            </form>
+            <h3>Ürün Başlığı</h3>
+            <p>Açıklama 1</p>
+            <p>Açıklama 2</p>
+            <p>Açıklama 3</p>
         </div>
-    </div>    
+    </div>
 
-    <script type="module" src="index.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
