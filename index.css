@@ -8,7 +8,7 @@ body {
 
 /* Header */
 header {
-  background: linear-gradient (to bottom, #000000, #333)
+  background: linear-gradient(to bottom, #333, #000000);
   color: white;
   text-align: center;
   padding: 0.1px 0;
@@ -16,7 +16,7 @@ header {
 
 /* Footer */
 footer {
-  background: linear-gradient (to bottom, #000000, #333);
+  background: linear-gradient(to bottom, #333, #000000);
   color: white;
   text-align: center;
   padding: 10px 0;
