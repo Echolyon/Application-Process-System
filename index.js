@@ -147,6 +147,7 @@ onAuthStateChanged(auth, (user) => {
         document.getElementById("userEmail").textContent = user.email;
         document.getElementById("userName").textContent = user.displayName ? user.displayName : "Yok";
         document.getElementById("userStatus").textContent = user.emailVerified ? "Doğrulandı" : "Doğrulanmadı";
+        document.getElementById("userId").textContent = user.uid;
     } else {
         document.getElementById("authContainer").style.display = "block";
         document.getElementById("memberContainer").style.display = "none";
