@@ -34,7 +34,7 @@ footer p {
   background-color: #a5c8bcbd;
   border-radius: 9px;
   padding: 1px;
-  width: 50%;
+  width: 20%;
   height: 270px;
   max-width: 1200px;
   margin: 25px auto;
@@ -66,7 +66,7 @@ input {
   margin: 10px 0;
   margin-right: 250px;
   padding: 9px;
-  width: 30%;
+  width: 10%;
   border: 1px solid #ccc;
   border-radius: 9px; /* Sivri köşe yok */
   box-sizing: border-box;
@@ -75,10 +75,9 @@ input {
 button {
   background-color: black;
   color: white;
-  width: 20%;
+  width: 5%;
   padding: 9px;
   margin: 10px 0;
-  width: 150px;
   border: 1px solid #ccc;
   border-radius: 9px;
   margin-right: 330px;
