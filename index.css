@@ -101,22 +101,33 @@ button:hover {
   color: white;
   text-align: center;
 }
+.user-info {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
-#productTable {
+#userTable {
   width: 100%;
-  margin-top: 20px;
   border-collapse: collapse;
 }
 
-#productTable th, #productTable td {
+#userTable th, #userTable td {
+  border: 1px solid #ddd;
   padding: 10px;
-  border: 1px solid #ccc;
 }
 
-.footer-actions {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
+#userTable th {
+  background: #333;
+  color: white;
+}
+
+.user-info {
+  display: none; /* Sayfa açıldığında tablo gizli olacak */
 }
 
 .footer-actions button {
