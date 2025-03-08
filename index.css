@@ -11,7 +11,7 @@ header {
   background-color: black;
   color: white;
   text-align: center;
-  padding: 0.1 0;
+  padding: 0.1px 0;
 }
 
 /* Footer */
@@ -19,10 +19,10 @@ footer {
   background-color: black;
   color: white;
   text-align: center;
-  padding: 10 0;
+  padding: 10px 0;
   position: fixed;
   bottom: 0;
-  width: 100;
+  width: 100%;
 }
 
 footer p {
@@ -32,27 +32,27 @@ footer p {
 /* Giriş Paneli */
 .container {
   background-color: #a5c8bcbd;
-  border-radius: 9;
-  padding: 1;
-  width: 50;
-  height: 270;
-  max-width: 1200;
-  margin: 25 auto;
+  border-radius: 9px;
+  padding: 1px;
+  width: 50%;
+  height: 270px;
+  max-width: 1200px;
+  margin: 25px auto;
   text-align: center;
-  box-shadow: 0 4 8 (0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-  color: (84, 84, 84);
-  font-size: 24;
-  margin-bottom: 20;
+  color: rgb(84, 84, 84);
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .divider1 {
-  height: 2;
-  background-color: (128, 128, 128, 0.605);
-  border-radius: 0;
-  border: 0 solid;
+  height: 2px;
+  background-color: rgba(128, 128, 128, 0.605);
+  border-radius: 0px;
+  border: 0px solid;
 }
 
 .divider2 {
