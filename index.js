@@ -86,3 +86,19 @@ document.querySelectorAll('.open-lightbox').forEach(item => {
 closeBtn.addEventListener('click', () => {
     lightbox.style.display = 'none';
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            document.getElementById("userName").textContent = user.displayName || "Belirtilmemiş";
+            document.getElementById("userEmail").textContent = user.email;
+            document.getElementById("userId").textContent = user.uid;
+
+            // Kullanıcı giriş yaptıysa tabloyu göster
+            document.querySelector(".user-info").style.display = "block";
+        } else {
+            // Kullanıcı giriş yapmadıysa tabloyu gizli bırak
+            document.querySelector(".user-info").style.display = "none";
+        }
+    });
+});
