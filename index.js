@@ -91,56 +91,51 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Hata: " + error.message);
         });
     });
-    
-    // Formu oluşturma işlemi
-    document.getElementById("createForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formTitle = document.getElementById("formTitle").value;
-        const formContent = document.getElementById("formContent").value;
 
-        // Firebase Firestore'a formu ekleme işlemi
-        const db = getFirestore(app);
-        const formsRef = collection(db, "forms");
-        addDoc(formsRef, {
-            title: formTitle,
-            content: formContent,
-            userId: auth.currentUser.uid,
-            timestamp: serverTimestamp()
-        })
-        .then(() => {
-            alert("Form başarıyla oluşturuldu!");
-            document.getElementById("formTitle").value = "";
-            document.getElementById("formContent").value = "";
-        })
-        .catch(error => {
-            alert("Hata oluştu: " + error.message);
-        });
+    // Fetch and display form submissions
+    fetchFormSubmissions();
+
+    // Lightbox close button
+    document.querySelector(".close").addEventListener("click", () => {
+        document.getElementById("formDetailsLightbox").style.display = "none";
     });
 
-    // Formları listeleme işlemi
-    const displayForms = () => {
-        const db = getFirestore(app);
-        const formsRef = collection(db, "forms");
-        getDocs(formsRef)
-            .then((querySnapshot) => {
-                const formsList = document.getElementById("formsList");
-                formsList.innerHTML = ""; // Önceki listeyi temizle
-                querySnapshot.forEach((doc) => {
-                    const form = doc.data();
-                    const formElement = document.createElement("div");
-                    formElement.classList.add("form-item");
-                    formElement.innerHTML = `<h3>${form.title}</h3><p>${form.content}</p>`;
-                    formsList.appendChild(formElement);
-                });
-            })
-            .catch(error => {
-                console.error("Hata oluştu: ", error);
-            });
-    };
-    
-    // Sayfa yüklendiğinde formlar listelensin
-    displayForms();
+    // Process form button
+    document.getElementById("processForm").addEventListener("click", () => {
+        alert("Form ile ilgili işlem uygulandı!");
+        document.getElementById("formDetailsLightbox").style.display = "none";
+    });
 });
+
+function fetchFormSubmissions() {
+    // Simulate fetching form submissions from a server
+    const formSubmissions = [
+        { title: "Form 1", details: "Form 1 detayları..." },
+        { title: "Form 2", details: "Form 2 detayları..." }
+    ];
+
+    const tableBody = document.querySelector("#formSubmissionsTable tbody");
+    formSubmissions.forEach((submission, index) => {
+        const row = document.createElement("tr");
+        const titleCell = document.createElement("td");
+        titleCell.textContent = submission.title;
+        const actionCell = document.createElement("td");
+        const viewButton = document.createElement("button");
+        viewButton.textContent = "Görüntüle";
+        viewButton.addEventListener("click", () => {
+            showFormDetails(submission.details);
+        });
+        actionCell.appendChild(viewButton);
+        row.appendChild(titleCell);
+        row.appendChild(actionCell);
+        tableBody.appendChild(row);
+    });
+}
+
+function showFormDetails(details) {
+    document.getElementById("formDetailsContent").textContent = details;
+    document.getElementById("formDetailsLightbox").style.display = "block";
+}
 
 // Kullanıcı giriş yaptıktan sonra bilgileri al ve tabloya yaz
 onAuthStateChanged(auth, (user) => {
