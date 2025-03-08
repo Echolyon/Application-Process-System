@@ -78,12 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("userId").textContent = user.uid;
 
 
-        firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        // Kullanıcı giriş yaptıysa, tabloyu göster
-        document.getElementById('memberTable').style.display = 'block';
-    } else {
-        // Kullanıcı giriş yapmadıysa, tabloyu gizle
-        document.getElementById('memberTable').style.display = 'none';
-    }
+        // Kullanıcı giriş yaptıysa tabloyu göster
+            document.querySelector(".user-info").style.display = "table";
+        } else {
+            // Kullanıcı giriş yapmadıysa tabloyu gizli bırak
+            document.querySelector(".user-info").style.display = "none";
+        }
+    });
 });
