@@ -26,34 +26,31 @@
     </div>
 
     <!-- Member Paneli (Giriş sonrası) -->
+    <div class="user-info">
+        <h2>Profil Bilgileri</h2>
+        <table id="userTable">
+            <tr>
+                <th>Bilgi</th>
+                <th>Değer</th>
+            </tr>
+            <tr>
+                <td>İsim</td>
+                <td id="userName">-</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td id="userEmail">-</td>
+            </tr>
+            <tr>
+                <td>Kullanıcı ID</td>
+                <td id="userId">-</td>
+            </tr>
+        </table>
+    </div>
     <div class="container" id="memberContainer" style="display: none;">
-        <div class="overlay">
-            <table id="productTable">
-                <thead>
-                    <tr>
-                        <th>Ürün Adı</th>
-                        <th>Açıklama</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Dinamik olarak ürünler buraya eklenecek -->
-                </tbody>
-            </table>
-        </div>
         <div class="footer-actions">
             <button id="changePassword">Şifre Değiştir</button>
             <button id="logout">Çıkış Yap</button>
-        </div>
-    </div>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Ürün Başlığı</h3>
-            <p>Açıklama 1</p>
-            <p>Açıklama 2</p>
-            <p>Açıklama 3</p>
         </div>
     </div>
 
