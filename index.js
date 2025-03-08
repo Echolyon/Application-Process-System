@@ -1,13 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { 
-    getAuth, 
-    signInWithEmailAndPassword, 
-    onAuthStateChanged, 
-    signOut, 
-    sendPasswordResetEmail 
-} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
-// Firebase yapılandırması
 const firebaseConfig = {
     apiKey: "AIzaSyBxwWd_95aNhbPIrpo0I1myBiMXVxRJ2MM",
     authDomain: "udem-auth-test.firebaseapp.com",
@@ -18,98 +11,100 @@ const firebaseConfig = {
     measurementId: "G-PEJC0TZNM7"
 };
 
-// Firebase başlat
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// HTML Elemanlarını Seçme
-const authContainer = document.getElementById("authContainer");
-const accountTableContainer = document.getElementById("accountTableContainer");
-const userInfoTable = document.getElementById("userInfoTable");
-const loginForm = document.getElementById("loginForm");
-const logoutButton = document.getElementById("logout");
-const changePasswordButton = document.getElementById("changePassword");
-const errorMessage = document.getElementById("errorMessage");
+document.addEventListener("DOMContentLoaded", function () {
+    // Sayfa yüklendikten sonra onAuthStateChanged'i başlatıyoruz
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Giriş yaptıysa, giriş panelini gizleyip, üye panelini göster
+            document.getElementById("authContainer").style.display = "none";
+            document.getElementById("memberContainer").style.display = "block";
+            // Kullanıcı bilgilerini tabloya yerleştir
+            document.getElementById("userName").textContent = user.displayName || "Belirtilmemiş";
+            document.getElementById("userEmail").textContent = user.email;
+            document.getElementById("userId").textContent = user.uid;
+            // Tabloyu göster
+            const memberTable = document.getElementById("memberTable");
+            if (memberTable) {
+                memberTable.style.display = "table";
+            }
+        } else {
+            // Kullanıcı giriş yapmamışsa, giriş panelini göster ve üye panelini gizle
+            document.getElementById("authContainer").style.display = "block";
+            document.getElementById("memberContainer").style.display = "none";
+            // Tabloyu gizle
+            const memberTable = document.getElementById("memberTable");
+            if (memberTable) {
+                memberTable.style.display = "none";
+            }
+        }
+    });
 
-// Kullanıcı Bilgilerini Güncelleme Fonksiyonu
-function updateUserInfo(user) {
-    if (user) {
-        authContainer.style.display = "none";
-        accountTableContainer.style.display = "block";
-        userInfoTable.style.display = "table";
-
-        document.getElementById("userEmail").textContent = user.email;
-        document.getElementById("userName").textContent = user.displayName || "Bilinmiyor";
-        document.getElementById("userStatus").textContent = user.emailVerified ? "Onaylı" : "Onaysız";
-    } else {
-        authContainer.style.display = "block";
-        accountTableContainer.style.display = "none";
-        userInfoTable.style.display = "none";
-    }
-}
-
-// Kullanıcı oturum durumunu takip et
-onAuthStateChanged(auth, (user) => {
-    updateUserInfo(user);
-});
-
-// Giriş formu işlemi
-if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
+    // Giriş formu işlemi
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
         e.preventDefault();
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
-                updateUserInfo(auth.currentUser);
+                // Başarılı giriş sonrası sayfa yenilenmesi
+                window.location.href = "index.html";
             })
             .catch(error => {
-                let errorMsg = "";
+                let errorMessage = "";
                 switch (error.code) {
                     case "auth/invalid-email":
-                        errorMsg = "Geçersiz e-posta adresi!";
+                        errorMessage = "Geçersiz e-posta adresi!";
                         break;
                     case "auth/user-disabled":
-                        errorMsg = "Hesabınız devre dışı bırakıldı.";
+                        errorMessage = "Hesabınız devre dışı bırakıldı.";
                         break;
                     case "auth/user-not-found":
-                        errorMsg = "Böyle bir kullanıcı bulunamadı.";
+                        errorMessage = "Böyle bir kullanıcı bulunamadı.";
                         break;
                     case "auth/wrong-password":
-                        errorMsg = "Yanlış şifre.";
+                        errorMessage = "Yanlış şifre.";
                         break;
                     default:
-                        errorMsg = "Bir hata oluştu, lütfen tekrar deneyin.";
+                        errorMessage = "Bir hata oluştu, lütfen tekrar deneyin.";
                 }
-                errorMessage.innerText = errorMsg;
+                document.getElementById("errorMessage").innerText = errorMessage;
             });
     });
-}
 
-// Çıkış Yapma İşlemi
-if (logoutButton) {
-    logoutButton.addEventListener("click", () => {
+    // Çıkış işlemi
+    document.getElementById("logout").addEventListener("click", () => {
         signOut(auth).then(() => {
-            updateUserInfo(null);
+            window.location.href = "index.html";
         });
     });
-}
 
-// Şifre Sıfırlama İşlemi
-if (changePasswordButton) {
-    changePasswordButton.addEventListener("click", () => {
-        const user = auth.currentUser;
-        if (user) {
-            sendPasswordResetEmail(auth, user.email)
-                .then(() => {
-                    alert("Şifre sıfırlama e-postası gönderildi!");
-                })
-                .catch(error => {
-                    alert("Hata: " + error.message);
-                });
-        } else {
-            alert("Önce giriş yapmalısınız!");
-        }
+    // Şifre değiştirme işlemi
+    document.getElementById("changePassword").addEventListener("click", () => {
+        const email = auth.currentUser.email;
+        sendPasswordResetEmail(auth, email).then(() => {
+            alert("Şifre sıfırlama e-postası gönderildi!");
+        }).catch(error => {
+            alert("Hata: " + error.message);
+        });
     });
+});
+
+// Kullanıcı giriş yaptıktan sonra bilgileri al ve tabloya yaz
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        document.getElementById("authContainer").style.display = "none";
+        document.getElementById("memberContainer").style.display = "block";
+
+        // Kullanıcı bilgilerini tabloya ekle
+        document.getElementById("userEmail").textContent = user.email;
+        document.getElementById("userName").textContent = user.displayName ? user.displayName : "Yok";
+        document.getElementById("userStatus").textContent = user.emailVerified ? "Doğrulandı" : "Doğrulanmadı";
+    } else {
+        document.getElementById("authContainer").style.display = "block";
+        document.getElementById("memberContainer").style.display = "none";
+    }
 });
