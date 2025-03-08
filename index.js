@@ -92,3 +92,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Kullanıcı giriş yaptıktan sonra bilgileri al ve tabloya yaz
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        document.getElementById("authContainer").style.display = "none";
+        document.getElementById("memberContainer").style.display = "block";
+
+        // Kullanıcı bilgilerini tabloya ekle
+        document.getElementById("userEmail").textContent = user.email;
+        document.getElementById("userName").textContent = user.displayName ? user.displayName : "Yok";
+        document.getElementById("userStatus").textContent = user.emailVerified ? "Doğrulandı" : "Doğrulanmadı";
+    } else {
+        document.getElementById("authContainer").style.display = "block";
+        document.getElementById("memberContainer").style.display = "none";
+    }
+});
