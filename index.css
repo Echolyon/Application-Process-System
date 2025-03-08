@@ -90,6 +90,10 @@ button:hover {
 }
 
 /* Üye Paneli */
+#memberContainer {
+  display: none;
+}
+
 #memberContainer .overlay {
   background: rgba(0, 0, 0, 0.7);
   padding: 40px;
@@ -104,21 +108,90 @@ button:hover {
 
 /* Üye Bilgileri Tablosu */
 #userInfoTable {
-    width: 70%;
+    width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #userInfoTable th, #userInfoTable td {
-    padding: 10px;
+    padding: 7px;
     text-align: left;
     border: 1px solid #ccc;
 }
 
 #userInfoTable th {
     background-color: #f2f2f2;
+    width: 40%;
+}
+
+/* Formlar Tablosu */
+#userFormsTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#userFormsTable th, #userFormsTable td {
+    padding: 7px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+#userFormsTable th {
+    background-color: #f2f2f2;
+}
+
+#userFormsTable td button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#userFormsTable td button:hover {
+    background-color: #555;
+}
+
+/* Modal */
+#formModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  margin: 0 auto;
+  color: black;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .footer-actions button {
-  width: 48%;
+  width: 9%;
+  padding: 10px;
+  margin-right: 10px;
 }
