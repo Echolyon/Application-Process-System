@@ -1,6 +1,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    onAuthStateChanged, 
+    signOut, 
+    sendPasswordResetEmail 
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
+// Firebase yapılandırması
 const firebaseConfig = {
     apiKey: "AIzaSyBxwWd_95aNhbPIrpo0I1myBiMXVxRJ2MM",
     authDomain: "udem-auth-test.firebaseapp.com",
@@ -11,14 +18,14 @@ const firebaseConfig = {
     measurementId: "G-PEJC0TZNM7"
 };
 
-// Firebase başlatılıyor
+// Firebase başlat
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // HTML Elemanlarını Seçme
 const authContainer = document.getElementById("authContainer");
-const memberContainer = document.getElementById("memberContainer");
-const memberTable = document.getElementById("memberTable");
+const accountTableContainer = document.getElementById("accountTableContainer");
+const userInfoTable = document.getElementById("userInfoTable");
 const loginForm = document.getElementById("loginForm");
 const logoutButton = document.getElementById("logout");
 const changePasswordButton = document.getElementById("changePassword");
@@ -28,25 +35,25 @@ const errorMessage = document.getElementById("errorMessage");
 function updateUserInfo(user) {
     if (user) {
         authContainer.style.display = "none";
-        memberContainer.style.display = "block";
-        memberTable.style.display = "table";
+        accountTableContainer.style.display = "block";
+        userInfoTable.style.display = "table";
 
-        document.getElementById("userName").textContent = user.displayName || "Bilinmiyor";
         document.getElementById("userEmail").textContent = user.email;
-        document.getElementById("userId").textContent = user.uid;
+        document.getElementById("userName").textContent = user.displayName || "Bilinmiyor";
+        document.getElementById("userStatus").textContent = user.emailVerified ? "Onaylı" : "Onaysız";
     } else {
         authContainer.style.display = "block";
-        memberContainer.style.display = "none";
-        memberTable.style.display = "none";
+        accountTableContainer.style.display = "none";
+        userInfoTable.style.display = "none";
     }
 }
 
-// Kullanıcı Oturum Durumunu Kontrol Et
+// Kullanıcı oturum durumunu takip et
 onAuthStateChanged(auth, (user) => {
     updateUserInfo(user);
 });
 
-// Giriş Formu İşlemi
+// Giriş formu işlemi
 if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -55,7 +62,6 @@ if (loginForm) {
 
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
-                // Giriş başarılı olduğunda sayfa yenileme yerine kullanıcı arayüzünü güncelle
                 updateUserInfo(auth.currentUser);
             })
             .catch(error => {
@@ -106,4 +112,4 @@ if (changePasswordButton) {
             alert("Önce giriş yapmalısınız!");
         }
     });
-}
+});
