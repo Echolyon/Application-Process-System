@@ -102,33 +102,24 @@ button:hover {
   text-align: center;
 }
 .user-info {
-  width: 50%;
-  margin: 20px auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    display: none; /* Giriş yapılana kadar gizli */
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-collapse: collapse;
 }
 
-#userTable {
-  width: 100%;
-  border-collapse: collapse;
+.user-info th, .user-info td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
 }
 
-#userTable th, #userTable td {
-  border: 1px solid #ddd;
-  padding: 10px;
+.user-info th {
+    background-color: #333;
+    color: white;
 }
 
-#userTable th {
-  background: #333;
-  color: white;
-}
-
-.user-info {
-  display: none; /* Sayfa açıldığında tablo gizli olacak */
-}
 
 .footer-actions button {
   width: 48%;
