@@ -14,69 +14,81 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        // Giriş yaptıysa, giriş panelini gizleyip, üye panelini göster
-        document.getElementById("authContainer").style.display = "none";
-        document.getElementById("memberContainer").style.display = "block";
-        // Kullanıcı bilgilerini tabloya yerleştir
-        document.getElementById("userName").textContent = user.displayName || "Belirtilmemiş";
-        document.getElementById("userEmail").textContent = user.email;
-        document.getElementById("userId").textContent = user.uid;
-        // Tabloyu göster
-        document.getElementById("memberTable").style.display = "table";
-    } else {
-        // Kullanıcı giriş yapmamışsa, giriş panelini göster ve üye panelini gizle
-        document.getElementById("authContainer").style.display = "block";
-        document.getElementById("memberContainer").style.display = "none";
-        // Tabloyu gizle
-        document.getElementById("memberTable").style.display = "none";
-    }
-});
-
-document.getElementById("loginForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-            // Başarılı giriş sonrası sayfa yenilenmesi
-            window.location.href = "index.html";
-        })
-        .catch(error => {
-            let errorMessage = "";
-            switch (error.code) {
-                case "auth/invalid-email":
-                    errorMessage = "Geçersiz e-posta adresi!";
-                    break;
-                case "auth/user-disabled":
-                    errorMessage = "Hesabınız devre dışı bırakıldı.";
-                    break;
-                case "auth/user-not-found":
-                    errorMessage = "Böyle bir kullanıcı bulunamadı.";
-                    break;
-                case "auth/wrong-password":
-                    errorMessage = "Yanlış şifre.";
-                    break;
-                default:
-                    errorMessage = "Bir hata oluştu, lütfen tekrar deneyin.";
+document.addEventListener("DOMContentLoaded", function () {
+    // Sayfa yüklendikten sonra onAuthStateChanged'i başlatıyoruz
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Giriş yaptıysa, giriş panelini gizleyip, üye panelini göster
+            document.getElementById("authContainer").style.display = "none";
+            document.getElementById("memberContainer").style.display = "block";
+            // Kullanıcı bilgilerini tabloya yerleştir
+            document.getElementById("userName").textContent = user.displayName || "Belirtilmemiş";
+            document.getElementById("userEmail").textContent = user.email;
+            document.getElementById("userId").textContent = user.uid;
+            // Tabloyu göster
+            const memberTable = document.getElementById("memberTable");
+            if (memberTable) {
+                memberTable.style.display = "table";
             }
-            document.getElementById("errorMessage").innerText = errorMessage;
-        });
-});
-
-document.getElementById("logout").addEventListener("click", () => {
-    signOut(auth).then(() => {
-        window.location.href = "index.html";
+        } else {
+            // Kullanıcı giriş yapmamışsa, giriş panelini göster ve üye panelini gizle
+            document.getElementById("authContainer").style.display = "block";
+            document.getElementById("memberContainer").style.display = "none";
+            // Tabloyu gizle
+            const memberTable = document.getElementById("memberTable");
+            if (memberTable) {
+                memberTable.style.display = "none";
+            }
+        }
     });
-});
 
-document.getElementById("changePassword").addEventListener("click", () => {
-    const email = auth.currentUser.email;
-    sendPasswordResetEmail(auth, email).then(() => {
-        alert("Şifre sıfırlama e-postası gönderildi!");
-    }).catch(error => {
-        alert("Hata: " + error.message);
+    // Giriş formu işlemi
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                // Başarılı giriş sonrası sayfa yenilenmesi
+                window.location.href = "index.html";
+            })
+            .catch(error => {
+                let errorMessage = "";
+                switch (error.code) {
+                    case "auth/invalid-email":
+                        errorMessage = "Geçersiz e-posta adresi!";
+                        break;
+                    case "auth/user-disabled":
+                        errorMessage = "Hesabınız devre dışı bırakıldı.";
+                        break;
+                    case "auth/user-not-found":
+                        errorMessage = "Böyle bir kullanıcı bulunamadı.";
+                        break;
+                    case "auth/wrong-password":
+                        errorMessage = "Yanlış şifre.";
+                        break;
+                    default:
+                        errorMessage = "Bir hata oluştu, lütfen tekrar deneyin.";
+                }
+                document.getElementById("errorMessage").innerText = errorMessage;
+            });
+    });
+
+    // Çıkış işlemi
+    document.getElementById("logout").addEventListener("click", () => {
+        signOut(auth).then(() => {
+            window.location.href = "index.html";
+        });
+    });
+
+    // Şifre değiştirme işlemi
+    document.getElementById("changePassword").addEventListener("click", () => {
+        const email = auth.currentUser.email;
+        sendPasswordResetEmail(auth, email).then(() => {
+            alert("Şifre sıfırlama e-postası gönderildi!");
+        }).catch(error => {
+            alert("Hata: " + error.message);
+        });
     });
 });
