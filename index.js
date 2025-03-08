@@ -16,11 +16,21 @@ const auth = getAuth(app);
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
+        // Giriş yaptıysa, giriş panelini gizleyip, üye panelini göster
         document.getElementById("authContainer").style.display = "none";
         document.getElementById("memberContainer").style.display = "block";
+        // Kullanıcı bilgilerini tabloya yerleştir
+        document.getElementById("userName").textContent = user.displayName || "Belirtilmemiş";
+        document.getElementById("userEmail").textContent = user.email;
+        document.getElementById("userId").textContent = user.uid;
+        // Tabloyu göster
+        document.getElementById("memberTable").style.display = "table";
     } else {
+        // Kullanıcı giriş yapmamışsa, giriş panelini göster ve üye panelini gizle
         document.getElementById("authContainer").style.display = "block";
         document.getElementById("memberContainer").style.display = "none";
+        // Tabloyu gizle
+        document.getElementById("memberTable").style.display = "none";
     }
 });
 
@@ -31,6 +41,7 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
 
     signInWithEmailAndPassword(auth, email, password)
         .then(() => {
+            // Başarılı giriş sonrası sayfa yenilenmesi
             window.location.href = "index.html";
         })
         .catch(error => {
@@ -67,22 +78,5 @@ document.getElementById("changePassword").addEventListener("click", () => {
         alert("Şifre sıfırlama e-postası gönderildi!");
     }).catch(error => {
         alert("Hata: " + error.message);
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            document.getElementById("userName").textContent = user.displayName || "Belirtilmemiş";
-            document.getElementById("userEmail").textContent = user.email;
-            document.getElementById("userId").textContent = user.uid;
-
-
-        // Kullanıcı giriş yaptıysa tabloyu göster
-            document.querySelector(".user-info").style.display = "table";
-        } else {
-            // Kullanıcı giriş yapmadıysa tabloyu gizli bırak
-            document.querySelector(".user-info").style.display = "none";
-        }
     });
 });
