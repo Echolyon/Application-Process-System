@@ -91,6 +91,55 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Hata: " + error.message);
         });
     });
+    
+    // Formu oluşturma işlemi
+    document.getElementById("createForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formTitle = document.getElementById("formTitle").value;
+        const formContent = document.getElementById("formContent").value;
+
+        // Firebase Firestore'a formu ekleme işlemi
+        const db = getFirestore(app);
+        const formsRef = collection(db, "forms");
+        addDoc(formsRef, {
+            title: formTitle,
+            content: formContent,
+            userId: auth.currentUser.uid,
+            timestamp: serverTimestamp()
+        })
+        .then(() => {
+            alert("Form başarıyla oluşturuldu!");
+            document.getElementById("formTitle").value = "";
+            document.getElementById("formContent").value = "";
+        })
+        .catch(error => {
+            alert("Hata oluştu: " + error.message);
+        });
+    });
+
+    // Formları listeleme işlemi
+    const displayForms = () => {
+        const db = getFirestore(app);
+        const formsRef = collection(db, "forms");
+        getDocs(formsRef)
+            .then((querySnapshot) => {
+                const formsList = document.getElementById("formsList");
+                formsList.innerHTML = ""; // Önceki listeyi temizle
+                querySnapshot.forEach((doc) => {
+                    const form = doc.data();
+                    const formElement = document.createElement("div");
+                    formElement.classList.add("form-item");
+                    formElement.innerHTML = `<h3>${form.title}</h3><p>${form.content}</p>`;
+                    formsList.appendChild(formElement);
+                });
+            })
+            .catch(error => {
+                console.error("Hata oluştu: ", error);
+            });
+    };
+    
+    // Sayfa yüklendiğinde formlar listelensin
+    displayForms();
 });
 
 // Kullanıcı giriş yaptıktan sonra bilgileri al ve tabloya yaz
