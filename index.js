@@ -70,23 +70,6 @@ document.getElementById("changePassword").addEventListener("click", () => {
     });
 });
 
-
-// Lightbox Modal Kontrolleri
-const lightbox = document.getElementById("lightbox");
-const closeBtn = lightbox.querySelector(".close");
-
-document.querySelectorAll('.open-lightbox').forEach(item => {
-    item.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        // Lightbox içeriği burada dinamik olarak değiştirilebilir
-    });
-});
-
-// Kapatma Tuşu
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
-
 document.addEventListener("DOMContentLoaded", function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -95,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("userId").textContent = user.uid;
 
             // Kullanıcı giriş yaptıysa tabloyu göster
-            document.querySelector(".user-info").style.display = "block";
+            document.querySelector(".user-info").style.display = "table";
         } else {
             // Kullanıcı giriş yapmadıysa tabloyu gizli bırak
             document.querySelector(".user-info").style.display = "none";
