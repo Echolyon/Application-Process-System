@@ -33,13 +33,11 @@ footer p {
 .container {
   background-color: #a5c8bcbd;
   border-radius: 9px;
-  padding: 20px;
-  width: 40%;
-  max-width: 600px;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 1px;
+  width: 50%;
+  height: 270px;
+  max-width: 1200px;
+  margin: 25px auto;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -50,16 +48,25 @@ h2 {
   margin-bottom: 20px;
 }
 
-.divider1, .divider2 {
+.divider1 {
   height: 2px;
   background-color: rgba(128, 128, 128, 0.605);
-  border: 0;
+  border-radius: 0px;
+  border: 0px solid;
+}
+
+.divider2 {
+  height: 3px;
+  background-color: rgba(128, 128, 128, 0.605);
+  border-radius: 0px;
+  border: 0px solid;
 }
 
 input {
   margin: 10px 0;
+  margin-right: 250px;
   padding: 9px;
-  width: 80%;
+  width: 30%;
   border: 1px solid #ccc;
   border-radius: 9px; /* Sivri köşe yok */
   box-sizing: border-box;
@@ -68,10 +75,13 @@ input {
 button {
   background-color: black;
   color: white;
-  width: 100%;
+  width: 20%;
   padding: 9px;
+  margin: 10px 0;
+  width: 150px;
   border: 1px solid #ccc;
   border-radius: 9px;
+  margin-right: 330px;
   cursor: pointer;
 }
 
@@ -79,54 +89,36 @@ button:hover {
   background-color: #333;
 }
 
-/* Hesap Bilgileri Paneli */
-#accountTableContainer {
-  background-color: #a5c8bcbd;
-  border-radius: 9px;
-  padding: 20px;
-  width: 40%;
-  max-width: 600px;
-  position: absolute;
-  top: 22%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Üye Paneli */
+#memberContainer .overlay {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  color: white;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Hesap Bilgileri Tablosu */
+/* Üye Bilgileri Tablosu */
 #userInfoTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 #userInfoTable th, #userInfoTable td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
 }
 
 #userInfoTable th {
-  background-color: #555;
-  color: white;
-}
-
-/* Hesap Paneli Butonları */
-.footer-actions {
-  margin-top: 15px;
+    background-color: #f2f2f2;
 }
 
 .footer-actions button {
-  background-color: black;
-  color: white;
-  padding: 9px;
   width: 48%;
-  border: none;
-  border-radius: 9px;
-  cursor: pointer;
-}
-
-.footer-actions button:hover {
-  background-color: #333;
 }
