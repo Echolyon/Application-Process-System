@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UDEM Authentication</title>
     <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
     <!-- Header -->
     <header>
@@ -28,59 +26,57 @@
     </div>
 
     <!-- Member Paneli (Giriş sonrası) -->
-    <div id="memberContainer" style="display: none;">
-        <h2>Hesap Bilgileriniz</h2>
-        <table id="userInfoTable">
-            <tr>
-                <th>E-posta</th>
-                <td id="userEmail"></td>
-            </tr>
-            <tr>
-                <th>Kullanıcı Adı</th>
-                <td id="userName"></td>
-            </tr>
-            <tr>
-                <th>Hesap Durumu</th>
-                <td id="userStatus"></td>
-            </tr>
-        </table>
-
-        <h3>Gönderilen Formlar</h3>
-        <table id="userFormsTable">
-            <thead>
-                <tr>
-                    <th>Form Başlığı</th>
-                    <th>İşlem</th>
-                </tr>
-            </thead>
-            <tbody id="formTableBody">
-                <!-- Formlar dinamik olarak buraya eklenecek -->
-            </tbody>
-        </table>
-
-        <!-- Form detay modal -->
-        <div id="formModal" class="modal" style="display:none;">
-            <div class="modal-content">
-                <span id="closeModal" class="close">&times;</span>
-                <h4 id="formTitle"></h4>
-                <form id="formDetails">
-                    <!-- Form alanları dinamik olarak buraya eklenir -->
-                    <button type="submit">Gönder</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="footer-actions">
-            <button id="changePassword">Şifre Değiştir</button>
-            <button id="logout">Çıkış Yap</button>
-        </div>
+<div id="memberContainer" style="display: none;">
+    <h2>Hesap Bilgileriniz</h2>
+    <table id="userInfoTable">
+        <tr>
+            <th>E-posta</th>
+            <td id="userEmail"></td>
+        </tr>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <td id="userName"></td>
+        </tr>
+        <tr>
+            <th>Hesap Durumu</th>
+            <td id="userStatus"></td>
+        </tr>
+    </table>
+    <div class="footer-actions">
+        <button id="changePassword">Şifre Değiştir</button>
+        <button id="logout">Çıkış Yap</button>
     </div>
+    <!-- Form Submissions Table -->
+    <h2>Gönderilen Formlar</h2>
+    <table id="formSubmissionsTable">
+        <thead>
+            <tr>
+                <th>Başlık</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Form submissions will be dynamically added here -->
+        </tbody>
+    </table>
+</div>
 
+<!-- Lightbox for Form Details -->
+<div id="formDetailsLightbox" class="lightbox" style="display: none;">
+    <div class="lightbox-content">
+        <span class="close">&times;</span>
+        <h2>Form Detayları</h2>
+        <div id="formDetailsContent">
+            <!-- Form details will be dynamically added here -->
+        </div>
+        <button id="processForm">İşlem Uygula</button>
+    </div>
+</div>
+    
     <footer>
         <p>UDEM Auth System Prototype Testing</p>
     </footer>
 
     <script type="module" src="index.js"></script>
 </body>
-
 </html>
