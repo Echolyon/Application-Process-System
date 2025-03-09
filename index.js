@@ -110,6 +110,17 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "index.html";
         });
     });
+
+    document.getElementById('profileButton').addEventListener('click', () => {
+        document.getElementById('memberContainer').style.display = 'block';
+        document.getElementById('memberContainer').classList.add('centered');
+        document.getElementById('formSubmissionsTableContainer').style.display = 'none';
+    });
+
+    document.getElementById('formControlButton').addEventListener('click', () => {
+        document.getElementById('formSubmissionsTableContainer').style.display = 'block';
+        document.getElementById('memberContainer').style.display = 'none';
+    });
 });
 
 function fetchFormSubmissions() {
