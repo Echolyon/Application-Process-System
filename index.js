@@ -5,7 +5,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyBxwWd_95aNhbPIrpo0I1myBiMXVxRJ2MM",
     authDomain: "udem-auth-test.firebaseapp.com",
     projectId: "udem-auth-test",
-    storageBucket: "udem-auth-test.appspot.com",
+    storageBucket: "udem-auth-test",
     messagingSenderId: "821819546336",
     appId: "1:821819546336:web:2142e07f01e357cabf4e85",
     measurementId: "G-PEJC0TZNM7"
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Giriş yaptıysa, giriş panelini gizleyip, üye panelini göster
             document.getElementById("authContainer").style.display = "none";
             document.getElementById("memberContainer").style.display = "block";
+            document.getElementById("sidebarPanel").style.display = "block";
             // Kullanıcı bilgilerini tabloya yerleştir
             document.getElementById("userName").textContent = user.displayName || "Belirtilmemiş";
             document.getElementById("userEmail").textContent = user.email;
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Kullanıcı giriş yapmamışsa, giriş panelini göster ve üye panelini gizle
             document.getElementById("authContainer").style.display = "block";
             document.getElementById("memberContainer").style.display = "none";
+            document.getElementById("sidebarPanel").style.display = "none";
             // Tabloyu gizle
             const memberTable = document.getElementById("memberTable");
             if (memberTable) {
@@ -75,23 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 
-    // Çıkış işlemi
-    document.getElementById("logout").addEventListener("click", () => {
-        signOut(auth).then(() => {
-            window.location.href = "index.html";
-        });
-    });
-
-    // Şifre değiştirme işlemi
-    document.getElementById("changePassword").addEventListener("click", () => {
-        const email = auth.currentUser.email;
-        sendPasswordResetEmail(auth, email).then(() => {
-            alert("Şifre sıfırlama e-postası gönderildi!");
-        }).catch(error => {
-            alert("Hata: " + error.message);
-        });
-    });
-
     // Fetch and display form submissions
     fetchFormSubmissions();
 
@@ -104,6 +89,26 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("processForm").addEventListener("click", () => {
         alert("Form ile ilgili işlem uygulandı!");
         document.getElementById("formDetailsLightbox").style.display = "none";
+    });
+
+    // Sidebar button actions
+    document.getElementById("profileButton").addEventListener("click", () => {
+        alert("Profil sayfasına yönlendiriliyorsunuz.");
+    });
+
+    document.getElementById("changePasswordButton").addEventListener("click", () => {
+        const email = auth.currentUser.email;
+        sendPasswordResetEmail(auth, email).then(() => {
+            alert("Şifre sıfırlama e-postası gönderildi!");
+        }).catch(error => {
+            alert("Hata: " + error.message);
+        });
+    });
+
+    document.getElementById("logoutButton").addEventListener("click", () => {
+        signOut(auth).then(() => {
+            window.location.href = "index.html";
+        });
     });
 });
 
