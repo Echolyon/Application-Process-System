@@ -93,7 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sidebar button actions
     document.getElementById("profileButton").addEventListener("click", () => {
-        alert("Profil sayfasına yönlendiriliyorsunuz.");
+        document.getElementById('memberContainer').style.display = 'block';
+        document.getElementById('memberContainer').classList.add('centered');
+        document.getElementById('formSubmissionsTableContainer').style.display = 'none';
     });
 
     document.getElementById("changePasswordButton").addEventListener("click", () => {
