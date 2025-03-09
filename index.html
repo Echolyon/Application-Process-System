@@ -45,13 +45,13 @@
     </div>
 
     <!-- Form Submissions Table Container -->
-    <div id="formSubmissionsTableContainer">
+    <div id="formSubmissionsTableContainer" style="display: none; margin: 0 auto; width: 80%;">
         <h2>Gönderilen Formlar</h2>
         <table id="formSubmissionsTable">
             <thead>
                 <tr>
                     <th>Başlık</th>
-                    <th>İşlem</th>
+                    <th style="width: 100px;">İşlem</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,15 +76,15 @@
 
     <!-- Lightbox for Form Details -->
     <div id="formDetailsLightbox" class="lightbox" style="display: none;">
-    <div class="lightbox-content">
-        <span class="close">&times;</span>
-        <h2>Form Detayları</h2>
-        <div id="formDetailsContent">
-            <!-- Form details will be dynamically added here -->
+        <div class="lightbox-content" style="width: 50%; max-width: 600px;">
+            <span class="close">&times;</span>
+            <h2>Form Detayları</h2>
+            <div id="formDetailsContent">
+                <!-- Form details will be dynamically added here -->
+            </div>
+            <button id="processForm">Onayla</button>
         </div>
-        <button id="processForm">Onayla</button>
     </div>
-</div>
     
     <footer>
         <p>Form İşlemleri Sistemi Prototip Testi</p>
