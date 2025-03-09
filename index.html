@@ -26,56 +26,52 @@
     </div>
 
     <!-- Member Paneli (Giriş sonrası) -->
-<div id="memberContainer" style="display: none;">
-    <h2>Hesap Bilgileriniz</h2>
-    <table id="userInfoTable">
-        <tr>
-            <th>E-posta</th>
-            <td id="userEmail"></td>
-        </tr>
-        <tr>
-            <th>Kullanıcı ID</th>
-            <td id="userId"></td>
-        </tr>
-        <tr>
-            <th>Hesap Durumu</th>
-            <td id="userStatus"></td>
-        </tr>
-    </table>
-    <div class="footer-actions">
-        <!-- Buttons removed as they are now in the sidebar -->
-    </div>
-    <!-- Form Submissions Table -->
-    <h2>Gönderilen Formlar</h2>
-    <table id="formSubmissionsTable">
-        <thead>
+    <div id="memberContainer" style="display: none;">
+        <h2>Hesap Bilgileriniz</h2>
+        <table id="userInfoTable">
             <tr>
-                <th>Başlık</th>
-                <th>İşlem</th>
+                <th>E-posta</th>
+                <td id="userEmail"></td>
             </tr>
-        </thead>
-        <tbody>
-            <!-- Form submissions will be dynamically added here -->
-        </tbody>
-    </table>
-</div>
-
-<!-- Sidebar Panel -->
-<div id="sidebarPanel" style="display: none;">
-    <div class="sidebar-section" id="applicationsSection">
-        <h3>Başvurular</h3>
-        <!-- Add application-related menus here -->
+            <tr>
+                <th>Kullanıcı ID</th>
+                <td id="userId"></td>
+            </tr>
+            <tr>
+                <th>Hesap Durumu</th>
+                <td id="userStatus"></td>
+            </tr>
+        </table>
+        <h2>Gönderilen Formlar</h2>
+        <table id="formSubmissionsTable">
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Form submissions will be dynamically added here -->
+            </tbody>
+        </table>
     </div>
-    <div class="sidebar-section" id="profileSection">
-        <h3>Profil</h3>
-        <button id="profileButton">Profil</button>
-        <button id="changePasswordButton">Şifre Değiştir</button>
-        <button id="logoutButton">Çıkış Yap</button>
-    </div>
-</div>
 
-<!-- Lightbox for Form Details -->
-<div id="formDetailsLightbox" class="lightbox" style="display: none;">
+    <!-- Sidebar Panel -->
+    <div id="sidebarPanel" style="display: none;">
+        <div class="sidebar-section" id="applicationsSection">
+            <h3>Başvurular</h3>
+            <!-- Add application-related menus here -->
+        </div>
+        <div class="sidebar-section" id="profileSection">
+            <h3>Profil</h3>
+            <button id="profileButton">Profil</button>
+            <button id="changePasswordButton">Şifre Değiştir</button>
+            <button id="logoutButton">Çıkış Yap</button>
+        </div>
+    </div>
+
+    <!-- Lightbox for Form Details -->
+    <div id="formDetailsLightbox" class="lightbox" style="display: none;">
     <div class="lightbox-content">
         <span class="close">&times;</span>
         <h2>Form Detayları</h2>
