@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         errorMessage = "Yanlış şifre.";
                         break;
                     default:
-                        errorMessage = "Bir hata oluştu, lütfen tekrar deneyin.";
+                        errorMessage = "An error occured. Please try again.";
                 }
                 document.getElementById("errorMessage").innerText = errorMessage;
             });
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Process form button
     document.getElementById("processForm").addEventListener("click", () => {
-        alert("Form ile ilgili işlem uygulandı!");
+        alert("Form process completed!");
         document.getElementById("formDetailsLightbox").style.display = "none";
     });
 
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("changePasswordButton").addEventListener("click", () => {
         const email = auth.currentUser.email;
         sendPasswordResetEmail(auth, email).then(() => {
-            alert("Şifre sıfırlama e-postası gönderildi!");
+            alert("Password reset email sent!");
         }).catch(error => {
             alert("Hata: " + error.message);
         });
@@ -128,8 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function fetchFormSubmissions() {
     // Simulate fetching form submissions from a server
     const formSubmissions = [
-        { title: "Form 1", details: "Form 1 detayları..." },
-        { title: "Form 2", details: "Form 2 detayları..." }
+        { title: "Form 1", details: "Form 1 details..." },
+        { title: "Form 2", details: "Form 2 details..." }
     ];
 
     const tableBody = document.querySelector("#formSubmissionsTable tbody");
@@ -139,7 +139,7 @@ function fetchFormSubmissions() {
         titleCell.textContent = submission.title;
         const actionCell = document.createElement("td");
         const viewButton = document.createElement("button");
-        viewButton.textContent = "Görüntüle";
+        viewButton.textContent = "View";
         viewButton.addEventListener("click", () => {
             showFormDetails(submission.details);
         });
