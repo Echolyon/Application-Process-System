@@ -157,7 +157,7 @@ button:hover {
 #formSubmissionsTableContainer {
     display: none;
     margin: 0 auto;
-    width: 80%;
+    width: 60%;
 }
 
 /* Lightbox */
@@ -179,8 +179,8 @@ button:hover {
     border-radius: 10px;
     text-align: center;
     position: relative;
-    width: 50%;
-    max-width: 600px;
+    width: 40%;
+    max-width: 500px;
 }
 
 .lightbox .close {
