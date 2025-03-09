@@ -14,6 +14,18 @@ header {
   padding: 0.1px 0;
 }
 
+header .application-link {
+  display: block;
+  text-align: left;
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  margin: 30px -620px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* Footer */
 footer {
   background: linear-gradient(to bottom, #333, #000000);
