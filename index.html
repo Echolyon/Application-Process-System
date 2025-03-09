@@ -3,43 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form İşlemleri Sistemi</title>
+    <title>Application Process System</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <a href="https://udemform.netlify.app/" class="application-link">Başvuru Yap</a>
-        <h1>Form İşlemleri Sistemi</h1>
+        <a href="https://udemform.netlify.app/" class="application-link">Make a Submission</a>
+        <h1>Application Process System</h1>
     </header>
 
     <!-- Giriş Paneli -->
     <div class="container" id="authContainer">
-        <h2>Sistemi kullanmak için giriş yapınız.</h2>
+        <h2>Log in to use the system.</h2>
         <hr class="divider1">
         <form id="loginForm">
-            <input type="email" id="email" placeholder="E-posta" required>
-            <input type="password" id="password" placeholder="Şifre" required>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="password" id="password" placeholder="Password" required>
             <hr class="divider2">
-            <button type="submit">GİRİŞ YAP</button>
+            <button type="submit">SIGN IN</button>
         </form>
         <p id="errorMessage"></p>
     </div>
 
     <!-- Member Paneli (Giriş sonrası) -->
     <div id="memberContainer" style="display: none;">
-        <h2>Hesap Bilgileriniz</h2>
+        <h2>Account Information</h2>
         <table id="userInfoTable">
             <tr>
-                <th>E-posta</th>
+                <th>E-mail</th>
                 <td id="userEmail"></td>
             </tr>
             <tr>
-                <th>Kullanıcı ID</th>
+                <th>User ID</th>
                 <td id="userId"></td>
             </tr>
             <tr>
-                <th>Hesap Durumu</th>
+                <th>Account Status</th>
                 <td id="userStatus"></td>
             </tr>
         </table>
@@ -47,12 +47,12 @@
 
     <!-- Form Submissions Table Container -->
     <div id="formSubmissionsTableContainer" style="display: none; margin: 0 auto; width: 60%;">
-        <h2>Gönderilen Formlar</h2>
+        <h2>Submitted Forms</h2>
         <table id="formSubmissionsTable">
             <thead>
                 <tr>
-                    <th>Başlık</th>
-                    <th style="width: 100px;">İşlem</th>
+                    <th>Title</th>
+                    <th style="width: 100px;">Process</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,14 +64,14 @@
     <!-- Sidebar Panel -->
     <div id="sidebarPanel" style="display: none; position: absolute; top: 100px; left: 0; width: 200px;">
         <div class="sidebar-section" id="applicationsSection">
-            <h3>Başvuru Merkezi</h3>
-            <button id="formControlButton">Form Kontrol</button>
+            <h3>Submission Center</h3>
+            <button id="formControlButton">Form Control</button>
         </div>
         <div class="sidebar-section" id="profileSection">
-            <h3>Profil</h3>
-            <button id="profileButton">Profil</button>
-            <button id="changePasswordButton">Şifre Değiştir</button>
-            <button id="logoutButton">Çıkış Yap</button>
+            <h3>Profile Actions</h3>
+            <button id="profileButton">Profile</button>
+            <button id="changePasswordButton">Change Password</button>
+            <button id="logoutButton">Sign Out</button>
         </div>
     </div>
 
@@ -79,16 +79,16 @@
     <div id="formDetailsLightbox" class="lightbox" style="display: none;">
         <div class="lightbox-content" style="width: 40%; max-width: 500px;">
             <span class="close">&times;</span>
-            <h2>Form Detayları</h2>
+            <h2>Form Details</h2>
             <div id="formDetailsContent">
                 <!-- Form details will be dynamically added here -->
             </div>
-            <button id="processForm">Onayla</button>
+            <button id="processForm">Approve</button>
         </div>
     </div>
     
     <footer>
-        <p>Form İşlemleri Sistemi Prototip Testi</p>
+        <p>Application Process System Prototype Testing</p>
     </footer>
 
     <script type="module" src="index.js"></script>
