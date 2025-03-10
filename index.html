@@ -3,43 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application Process System</title>
+    <title>Başvuru İşlemleri Sistemi</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="indir.png" type="image/png">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <a href="https://udemform.netlify.app/" class="application-link">Make a Submission</a>
-        <h1>Application Process System</h1>
+        <img src="indir.png" alt="Logo">
+        <h1>Başvuru İşlemleri Sistemi</h1>
+        <a href="index.html">
+            <img src="giris.png" alt="Giriş" class="login-logo">
+        </a>
+        <a href="formsayfa.html" class="application-link">
+            <img src="basuvurubuton.png" alt="Başvuru Butonu">
+            Başvuru Sayfası
+        </a>
     </header>
+
+    <div class="info" id="infoContainer">
+        <h1 class="infoHeader">UYARI</h1>
+        <hr class="divider3">
+        <p class="infoP">Bu sistem herhangi resmi içerik veya kurumsal bir öğe içermemektedir. Test amaçlı oluşturulmuştur.</p>
+    </div>
+
+    <br>
 
     <!-- Giriş Paneli -->
     <div class="container" id="authContainer">
-        <h2>Log in to use the system.</h2>
+        <h2>Sistemi kullanmak için giriş yapınız.</h2>
         <hr class="divider1">
         <form id="loginForm">
-            <input type="email" id="email" placeholder="E-mail" required>
-            <input type="password" id="password" placeholder="Password" required>
+            <input type="email" id="email" placeholder="E-posta" required>
+            <input type="password" id="password" placeholder="Şifre" required>
             <hr class="divider2">
-            <button type="submit">SIGN IN</button>
+            <button type="submit">GİRİŞ YAP</button>
         </form>
         <p id="errorMessage"></p>
     </div>
 
     <!-- Member Paneli (Giriş sonrası) -->
     <div id="memberContainer" style="display: none;">
-        <h2>Account Information</h2>
+        <h2>Hesap Bilgileriniz</h2>
         <table id="userInfoTable">
             <tr>
-                <th>E-mail</th>
+                <th>E-posta</th>
                 <td id="userEmail"></td>
             </tr>
             <tr>
-                <th>User ID</th>
+                <th>Kullanıcı ID</th>
                 <td id="userId"></td>
             </tr>
             <tr>
-                <th>Account Status</th>
+                <th>Hesap Durumu</th>
                 <td id="userStatus"></td>
             </tr>
         </table>
@@ -47,12 +63,12 @@
 
     <!-- Form Submissions Table Container -->
     <div id="formSubmissionsTableContainer" style="display: none; margin: 0 auto; width: 60%;">
-        <h2>Submitted Forms</h2>
+        <h2>Gönderilen Formlar</h2>
         <table id="formSubmissionsTable">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th style="width: 100px;">Process</th>
+                    <th>Başlık</th>
+                    <th style="width: 100px;">İşlem</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,14 +80,15 @@
     <!-- Sidebar Panel -->
     <div id="sidebarPanel" style="display: none; position: absolute; top: 100px; left: 0; width: 200px;">
         <div class="sidebar-section" id="applicationsSection">
-            <h3>Submission Center</h3>
-            <button id="formControlButton">Form Control</button>
+            <h3>Başvuru Merkezi</h3>
+            <button id="formControlButton">Form Kontrol</button>
+            <button onclick="window.location.href='formsayfa.html'">Başvuru yap</button>
         </div>
         <div class="sidebar-section" id="profileSection">
-            <h3>Profile Actions</h3>
-            <button id="profileButton">Profile</button>
-            <button id="changePasswordButton">Change Password</button>
-            <button id="logoutButton">Sign Out</button>
+            <h3>Profil</h3>
+            <button id="profileButton">Profil</button>
+            <button id="changePasswordButton">Şifre Değiştir</button>
+            <button id="logoutButton">Çıkış Yap</button>
         </div>
     </div>
 
@@ -79,16 +96,16 @@
     <div id="formDetailsLightbox" class="lightbox" style="display: none;">
         <div class="lightbox-content" style="width: 40%; max-width: 500px;">
             <span class="close">&times;</span>
-            <h2>Form Details</h2>
+            <h2>Form Detayları</h2>
             <div id="formDetailsContent">
                 <!-- Form details will be dynamically added here -->
             </div>
-            <button id="processForm">Approve</button>
+            <button id="processForm">Onayla</button>
         </div>
     </div>
     
     <footer>
-        <p>Application Process System Prototype Testing</p>
+        <p>Başvuru İşlemleri Sistemi Prototip Testi</p>
     </footer>
 
     <script type="module" src="index.js"></script>
