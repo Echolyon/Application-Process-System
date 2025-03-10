@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Başvuru İşlemleri Sistemi</title>
+    <link rel="stylesheet" href="formsayfa.css">
+    <link rel="icon" href="indir.png" type="image/png">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="indir.png" alt="Logo">
+        <h1>Başvuru İşlemleri Sistemi</h1>
+        <a href="index.html">
+            <img src="giris.png" alt="Giriş" class="login-logo">
+        </a>
+        <a href="formsayfa.html" class="application-link">
+            <img src="basuvurubuton.png" alt="Başvuru Butonu">Başvuru Sayfası</a>
+    </header>
+
+    <!-- Central Container with Application Types -->
+    <div class="central-container">
+        <div class="application-box" id="applicationBox1">
+            <h2>Başvuru Türü 1</h2>
+            <p>Detaylar...</p>
+        </div>
+        <div class="application-box" id="applicationBox2">
+            <h2>Başvuru Türü 2</h2>
+            <p>Detaylar...</p>
+        </div>
+        <!-- Add more application boxes as needed -->
+    </div>
+
+    <!-- Lightbox for Application Form -->
+    <div class="lightbox" id="applicationFormLightbox" style="display: none;">
+        <div class="lightbox-content">
+            <span class="close" id="closeLightbox">&times;</span>
+            <h2>Başvuru Formu</h2>
+            <form id="applicationForm">
+                <!-- Form fields go here -->
+                <label for="name">Ad:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <button type="submit">Gönder</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox for Confirmation Message -->
+    <div class="lightbox" id="confirmationLightbox" style="display: none;">
+        <div class="lightbox-content">
+            <span class="close" id="closeConfirmationLightbox">&times;</span>
+            <h2>Başvurunuz işleme alınmıştır.</h2>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Başvuru İşlemleri Sistemi Prototip Testi</p>
+    </footer>
+
+    <script type="module" src="index.js"></script>
+    <script src="formsayfa.js"></script>
+</body>
+</html>

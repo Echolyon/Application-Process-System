@@ -1,0 +1,345 @@
+/* Genel Stil */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #7abea7; /* Yeşil tonunda arka plan */
+    min-height: 120vh; /* Ensure the body takes at least the full viewport height */
+  }
+  
+  /* Header */
+  header {
+    background: linear-gradient(to bottom, #333, #000000);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  header img {
+    margin-right: 10px;
+    height: 40px; /* Adjust the height as needed */
+  }
+  
+  header .application-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: absolute;
+    left: 20px; /* Adjusted to align with the left side */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  header .application-link img {
+    margin-right: 10px;
+    height: 40px; /* Adjust the height as needed */
+  }
+  
+  header .login-logo {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px; /* Adjust the height as needed */
+    cursor: pointer;
+  }
+  
+  /* Footer */
+  footer {
+    background: linear-gradient(to bottom, #333, #000000);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  .info {
+    background-color: #a5c8bcbd;
+    border-radius: 9px;
+    width: 50%; /* Adjusted width */
+    height: 130px;
+    margin: auto; /* Centered horizontally */
+    max-width: 1200px; /* Same as the login panel */
+    text-align: center; /* Center text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+  }
+  
+  .divider3 {
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.605);
+    border-radius: 0px;
+    border: 0px solid;
+  }
+  
+  .infoHeader {
+    color: rgb(84, 84, 84);
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  
+  .infoP {
+    color: rgb(84, 84, 84);
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Giriş Paneli */
+  .container {
+    background-color: #a5c8bcbd;
+    border-radius: 9px;
+    padding: 20px;
+    width: 50%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .container h2 {
+    color: rgb(84, 84, 84);
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .container p {
+    color: rgb(84, 84, 84);
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    color: rgb(84, 84, 84);
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .divider1 {
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.605);
+    border-radius: 0px;
+    border: 0px solid;
+  }
+  
+  .divider2 {
+    height: 3px;
+    background-color: rgba(128, 128, 128, 0.605);
+    border-radius: 0px;
+    border: 0px solid;
+  }
+  
+  input {
+    margin: 10px 0;
+    margin-right: 250px;
+    padding: 9px;
+    width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 9px; /* Sivri köşe yok */
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: black;
+    color: white;
+    width: 20%;
+    padding: 9px;
+    margin: 10px 0;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    margin-right: 330px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #333;
+  }
+  
+  /* Üye Paneli */
+  #memberContainer {
+      background-color: #fff;
+      border-radius: 9px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+      width: 250px; /* Adjusted width */
+      position: absolute;
+      top: 100px; /* Position below the header */
+      left: 20px; /* Position on the left side */
+  }
+  
+  #memberContainer.centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  
+  /* Üye Bilgileri Tablosu */
+  #userInfoTable {
+      width: 20%;
+      border-collapse: collapse;
+      margin-top: 20px;
+  }
+  
+  #userInfoTable th, #userInfoTable td {
+      padding: 7px;
+      text-align: left;
+      border: 1px solid #ccc;
+  }
+  
+  #userInfoTable th {
+      background-color: #f2f2f2;
+      width: 40%;
+  }
+  
+  .footer-actions button {
+    width: 9%;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  /* Form Submissions Table */
+  #formSubmissionsTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+  }
+  
+  #formSubmissionsTable th, #formSubmissionsTable td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ccc;
+  }
+  
+  #formSubmissionsTable th {
+      background-color: #f2f2f2;
+  }
+  
+  #formSubmissionsTable th:nth-child(2) {
+      width: 100px;
+  }
+  
+  #formSubmissionsTableContainer {
+      display: none;
+      margin: 0 auto;
+      width: 60%;
+  }
+  
+  /* Lightbox */
+  .lightbox {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .lightbox-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      width: 40%;
+      max-width: 500px;
+  }
+  
+  .lightbox .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+  }
+  
+  /* Sidebar Panel */
+  #sidebarPanel {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+      width: 250px;
+      position: absolute;
+      top: 100px;
+      left: 20px;
+  }
+  
+  .sidebar-section {
+      margin-bottom: 20px;
+  }
+  
+  .sidebar-section h3 {
+      border-bottom: 1px solid #555;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+  }
+  
+  .sidebar-section button {
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+  }
+  
+  .sidebar-section button:hover {
+      background-color: #555;
+  }
+
+  /* Central Container */
+.central-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
+/* Application Boxes */
+.application-box {
+    background-color: #a5c8bcbd;
+    border-radius: 9px;
+    padding: 20px;
+    width: 30%;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.application-box h2 {
+    color: rgb(84, 84, 84);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.application-box p {
+    color: rgb(84, 84, 84);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
