@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #7abea7; /* Yeşil tonunda arka plan */
+  min-height: 120vh; /* Ensure the body takes at least the full viewport height */
 }
 
 /* Header */
@@ -11,19 +12,42 @@ header {
   background: linear-gradient(to bottom, #333, #000000);
   color: white;
   text-align: center;
-  padding: 0.1px 0;
+  padding: 10px 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header img {
+  margin-right: 10px;
+  height: 40px; /* Adjust the height as needed */
 }
 
 header .application-link {
-  display: block;
-  text-align: left;
+  display: flex;
+  align-items: center;
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: bold;
-  margin: 30px -620px;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20px; /* Adjusted to align with the left side */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+header .application-link img {
+  margin-right: 10px;
+  height: 40px; /* Adjust the height as needed */
+}
+
+header .login-logo {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 40px; /* Adjust the height as needed */
+  cursor: pointer;
 }
 
 /* Footer */
@@ -41,6 +65,38 @@ footer p {
   margin: 0;
 }
 
+.info {
+  background-color: #a5c8bcbd;
+  border-radius: 9px;
+  width: 50%; /* Adjusted width */
+  height: 130px;
+  margin: auto; /* Centered horizontally */
+  max-width: 1200px; /* Same as the login panel */
+  text-align: center; /* Center text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.divider3 {
+  height: 2px;
+  background-color: rgba(128, 128, 128, 0.605);
+  border-radius: 0px;
+  border: 0px solid;
+}
+
+.infoHeader {
+  color: rgb(84, 84, 84);
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.infoP {
+  color: rgb(84, 84, 84);
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 /* Giriş Paneli */
 .container {
   background-color: #a5c8bcbd;
@@ -49,7 +105,7 @@ footer p {
   width: 50%;
   height: 270px;
   max-width: 1200px;
-  margin: 25px auto;
+  margin: 50px auto; /* Adjusted margin to position below the warning box */
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
