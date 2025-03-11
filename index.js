@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (user) {
             // Giriş yaptıysa, giriş panelini gizleyip, üye panelini göster
             document.getElementById("authContainer").style.display = "none";
+            document.getElementById("infoContainer").style.display = "none";
             document.getElementById("memberContainer").style.display = "block";
             document.getElementById("sidebarPanel").style.display = "block";
             // Kullanıcı bilgilerini tabloya yerleştir
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             // Kullanıcı giriş yapmamışsa, giriş panelini göster ve üye panelini gizle
             document.getElementById("authContainer").style.display = "block";
+            document.getElementById("infoContainer").style.display = "block";
             document.getElementById("memberContainer").style.display = "none";
             document.getElementById("sidebarPanel").style.display = "none";
             // Tabloyu gizle
